@@ -1,6 +1,7 @@
 import express from "express"
 import db from "./config/db.js"
 import UserRouter from "./users/userRouter.js"
+import birthdayScheduler from "./utils/scheduler.js"
 
 
 const app = express()
@@ -9,6 +10,8 @@ app.use(express.json())
 const port = process.env.PORT
 
 db.connect()
+
+birthdayScheduler()
 
 app.use("/user", UserRouter)
 
